@@ -1,9 +1,8 @@
-yfinance
 pandas
 numpy
 matplotlib
 seaborn
-jupyter
 scikit-learn
-joblib
 statsmodels
+yfinance
+joblib
