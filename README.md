@@ -1,7 +1,7 @@
 # Week 16: Stock Price Forecasting
 
 ## Project Overview
-This project focuses on Dataset exploration, Exploratory Data Analysis (EDA), Feature Engineering, Machine Learning Modeling, and Time Series Forecasting with ARIMA for Apple Inc. (`AAPL`) historical stock data from Yahoo Finance via `yfinance`.
+This project focuses on Dataset exploration, Exploratory Data Analysis (EDA), Feature Engineering, Machine Learning Modeling, Time Series Forecasting with ARIMA, and Diagnostic Visualization for Apple Inc. (`AAPL`) historical stock data from Yahoo Finance via `yfinance`.
 
 ## Project Structure
 ```text
@@ -11,13 +11,15 @@ Week16_Stock_Price_Forecasting/
 │   ├── AAPL_raw.csv
 │   ├── AAPL_eda.csv
 │   ├── AAPL_features.csv
-│   └── processed_stock_data.csv
+│   ├── processed_stock_data.csv
+│   └── predictions.csv
 ├── notebooks/
 │   ├── stock_forecasting.ipynb
 │   ├── stock_eda.ipynb
 │   ├── feature_engineering.ipynb
 │   ├── stock_forecasting_model.ipynb
-│   └── arima_forecasting.ipynb
+│   ├── arima_forecasting.ipynb
+│   └── forecast_visualization.ipynb
 ├── images/
 │   ├── apple_closing_price.png
 │   ├── eda_closing_price.png
@@ -29,13 +31,18 @@ Week16_Stock_Price_Forecasting/
 │   ├── eda_rolling_std.png
 │   ├── eda_correlation_heatmap.png
 │   ├── actual_vs_predicted.png
+│   ├── actual_vs_predicted_scatter.png
+│   ├── residual_plot.png
+│   ├── residual_distribution.png
 │   ├── arima_train_test.png
 │   ├── arima_forecast_vs_actual.png
 │   ├── arima_full_forecast.png
-│   └── arima_30day_forecast.png
+│   ├── arima_30day_forecast.png
+│   └── future_forecast_plot.png
 ├── model/
 │   └── linear_regression_stock.pkl
 ├── report/
+│   └── model_performance.csv
 ├── README.md
 └── requirements.txt
 ```
@@ -76,10 +83,11 @@ Week16_Stock_Price_Forecasting/
 - Evaluated test multi-step forecast performance (`MAE: 36.6161`, `RMSE: 42.7866`).
 - Fitted full dataset and generated 30-day future stock price forecast ([images/arima_30day_forecast.png](file:///c:/Users/acer/Desktop/python/week16/Week16_Stock_Price_Forecasting/images/arima_30day_forecast.png)).
 
-| Model | Advantages | Limitations |
-| :--- | :--- | :--- |
-| **Linear Regression** | Fast, simple, highly accurate with multi-feature lag inputs | Requires engineered lag features; doesn't natively model residual autocorrelation |
-| **ARIMA** | Native time series model; handles trends & autoregression without exogenous features | Multi-step unguided forecasts regress toward mean; sensitive to non-stationarity |
+### Day 6: Visualization & Forecast Analysis
+- Plotted Actual vs. Predicted line chart and Scatter plot for goodness of fit.
+- Calculated residual errors ($Residual = Actual - Predicted$).
+- Generated Residual Error Plot and Residual Distribution histogram with KDE curve.
+- Exported diagnostic report to `report/model_performance.csv`.
 
 ## Setup & Installation
 
@@ -90,5 +98,5 @@ pip install -r requirements.txt
 
 2. Run Jupyter Notebooks:
 ```bash
-jupyter notebook notebooks/arima_forecasting.ipynb
+jupyter notebook notebooks/forecast_visualization.ipynb
 ```
