@@ -35,7 +35,7 @@ Week16_Stock_Price_Forecasting/
 └── requirements.txt
 ```
 
-## Daily Progress
+## Daily Progress & Checklists
 
 ### Day 1: Dataset & Time Series Basics
 - Initialized folder structure and dependencies (`yfinance`, `pandas`, `matplotlib`, `seaborn`).
@@ -52,22 +52,23 @@ Week16_Stock_Price_Forecasting/
 - Engineered 1, 2, 3, 5, and 10-day lag features (`Lag_1` to `Lag_10`).
 - Created moving averages (`MA10`, `MA20`, `MA50`) and rolling standard deviations (`STD20`).
 - Calculated daily returns, rolling return averages (`Return_MA10`), and return volatility (`Return_STD10`).
-- Cleaned missing values (`dropna()`) and saved the final processed dataset to `data/processed_stock_data.csv`.
+- Cleaned missing values (`dropna()`) and saved final dataset to `data/processed_stock_data.csv`.
 
-### Day 4: Build the First Stock Price Forecasting Model
-- Created target column `Target = Close.shift(-1)` to forecast the next day's closing price.
-- Executed time series split (`train_test_split(shuffle=False)` with 80% train / 20% test).
-- Trained a **Linear Regression** baseline model.
-- Evaluation Results:
+### Day 4: Build Baseline Stock Price Forecasting Model
+- Loaded `processed_stock_data.csv` and created target column `Target = Close.shift(-1)`.
+- Performed sequential time series split (`train_test_split(shuffle=False)` with 80% train / 20% test).
+- Trained **Linear Regression** baseline model.
+- Evaluation Metrics:
   - **MAE:** `2.9090`
   - **RMSE:** `4.1947`
   - **R² Score:** `0.9653`
 - Visualized Actual vs Predicted price trend chart ([images/actual_vs_predicted.png](file:///c:/Users/acer/Desktop/python/week16/Week16_Stock_Price_Forecasting/images/actual_vs_predicted.png)).
-- Exported trained model to `model/linear_regression_stock.pkl`.
+- Predicted next trading day closing price: `$273.37`.
+- Exported trained model artifact to `model/linear_regression_stock.pkl`.
 
 ## Setup & Installation
 
-1. Install requirements:
+1. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
