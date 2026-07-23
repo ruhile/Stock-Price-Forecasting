@@ -1,7 +1,7 @@
 # Week 16: Stock Price Forecasting
 
 ## Project Overview
-This project focuses on Dataset, EDA, and Feature Engineering for stock price forecasting using Apple Inc. (`AAPL`) historical data from Yahoo Finance via `yfinance`.
+This project focuses on Dataset exploration, Exploratory Data Analysis (EDA), Feature Engineering, and Machine Learning Modeling for stock price forecasting using Apple Inc. (`AAPL`) historical data from Yahoo Finance via `yfinance`.
 
 ## Project Structure
 ```text
@@ -15,7 +15,8 @@ Week16_Stock_Price_Forecasting/
 ├── notebooks/
 │   ├── stock_forecasting.ipynb
 │   ├── stock_eda.ipynb
-│   └── feature_engineering.ipynb
+│   ├── feature_engineering.ipynb
+│   └── stock_forecasting_model.ipynb
 ├── images/
 │   ├── apple_closing_price.png
 │   ├── eda_closing_price.png
@@ -25,7 +26,10 @@ Week16_Stock_Price_Forecasting/
 │   ├── eda_daily_returns_distribution.png
 │   ├── eda_moving_averages.png
 │   ├── eda_rolling_std.png
-│   └── eda_correlation_heatmap.png
+│   ├── eda_correlation_heatmap.png
+│   └── actual_vs_predicted.png
+├── model/
+│   └── linear_regression_stock.pkl
 ├── report/
 ├── README.md
 └── requirements.txt
@@ -48,7 +52,18 @@ Week16_Stock_Price_Forecasting/
 - Engineered 1, 2, 3, 5, and 10-day lag features (`Lag_1` to `Lag_10`).
 - Created moving averages (`MA10`, `MA20`, `MA50`) and rolling standard deviations (`STD20`).
 - Calculated daily returns, rolling return averages (`Return_MA10`), and return volatility (`Return_STD10`).
-- Cleaned missing values (`dropna()`) and saved the final processed dataset to `data/processed_stock_data.csv` `(1962 rows x 17 columns)`.
+- Cleaned missing values (`dropna()`) and saved the final processed dataset to `data/processed_stock_data.csv`.
+
+### Day 4: Build the First Stock Price Forecasting Model
+- Created target column `Target = Close.shift(-1)` to forecast the next day's closing price.
+- Executed time series split (`train_test_split(shuffle=False)` with 80% train / 20% test).
+- Trained a **Linear Regression** baseline model.
+- Evaluation Results:
+  - **MAE:** `2.9090`
+  - **RMSE:** `4.1947`
+  - **R² Score:** `0.9653`
+- Visualized Actual vs Predicted price trend chart ([images/actual_vs_predicted.png](file:///c:/Users/acer/Desktop/python/week16/Week16_Stock_Price_Forecasting/images/actual_vs_predicted.png)).
+- Exported trained model to `model/linear_regression_stock.pkl`.
 
 ## Setup & Installation
 
@@ -59,5 +74,5 @@ pip install -r requirements.txt
 
 2. Run Jupyter Notebooks:
 ```bash
-jupyter notebook notebooks/feature_engineering.ipynb
+jupyter notebook notebooks/stock_forecasting_model.ipynb
 ```
